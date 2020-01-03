@@ -16,8 +16,8 @@
     "react-native"
   ],
   "author": {
-    "name": "Your Name",
     "email": "yourname@email.com"
+    "name": "Sebastián Pérez",
   },
   "license": "MIT",
   "licenseFilename": "LICENSE",
