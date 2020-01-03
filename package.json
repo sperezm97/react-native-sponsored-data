@@ -9,8 +9,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/github_account/react-native-sponsored-data.git",
-    "baseUrl": "https://github.com/github_account/react-native-sponsored-data"
+    "url": "git+https://github.com/sperezm97/react-native-sponsored-data.git",
+    "baseUrl": "https://github.com/sperezm97/react-native-sponsored-data"
   },
   "keywords": [
     "react-native",
