@@ -2,7 +2,7 @@
   "name": "react-native-sponsored-data",
   "title": "React Native Sponsored Data",
   "version": "1.0.0",
-  "description": "TODO",
+  "description": "Consuming internet without it using World Mobile Connection",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
