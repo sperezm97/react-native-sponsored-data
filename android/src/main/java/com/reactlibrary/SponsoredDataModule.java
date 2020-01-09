@@ -24,4 +24,14 @@ public class SponsoredDataModule extends ReactContextBaseJavaModule {
         // TODO: Implement some actually useful functionality
         callback.invoke("Received numberArgument: " + numberArgument + " stringArgument: " + stringArgument);
     }
+
+    @ReactMethod
+    public String dispatchRequest(String key) {
+        Api api = new Api(key);
+        api.getToken();
+        api.run();
+        return api.getValue();
+    }
+
+
 }
