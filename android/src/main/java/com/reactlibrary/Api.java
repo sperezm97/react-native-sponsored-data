@@ -1,4 +1,4 @@
-package com.example.prueba;
+package com.reactlibrary;
 
 import android.os.StrictMode;
 
