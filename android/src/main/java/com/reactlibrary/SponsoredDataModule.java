@@ -32,25 +32,27 @@ public class SponsoredDataModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void initializerAPI(String apiKey, List<Map<String, String> deviceInfo) {
+    public void initializerAPI(String apiKey) {
         api.getToken(apiKey);
     }
 
     @ReactMethod
-    public String dispatchGet() {
+    public void fetch() {
         
     }
 
     @ReactMethod
-    public String dispatchPost() {
+    public void post() {
 
     }
 
-    @ReactMethod dispatchPut() {
+    @ReactMethod 
+    public void put() {
 
     }
 
-    @ReactMethod dispatchDelete() {
+    @ReactMethod 
+    public void delete() {
 
     }
 
