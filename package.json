@@ -29,6 +29,8 @@
     "react-native": ">=0.59.0-rc.0 <1.0.x"
   },
   "devDependencies": {
+    "braces": "3.0.2",
+    "mem": "6.0.1",
     "react": "^16.8.3",
     "react-native": "^0.59.10"
   }
