@@ -8,7 +8,6 @@ import com.facebook.react.bridge.Callback;
 public class SponsoredDataModule extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
-    private final Api api = new Api();
 
     public SponsoredDataModule(ReactApplicationContext reactContext) {
         super(reactContext);
@@ -33,7 +32,7 @@ public class SponsoredDataModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void initializerAPI(String apiKey) {
-        api.getToken(apiKey);
+        
     }
 
     @ReactMethod
