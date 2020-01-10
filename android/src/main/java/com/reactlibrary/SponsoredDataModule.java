@@ -26,13 +26,13 @@ public class SponsoredDataModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public String dispatchRequest(String key) {
-        return key;
+    public String dispatchRequest() {
+        return "prueba";
     }
 
     @ReactMethod
     public void initializerAPI(String apiKey) {
-        
+
     }
 
     @ReactMethod
