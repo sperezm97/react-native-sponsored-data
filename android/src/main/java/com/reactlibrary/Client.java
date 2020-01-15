@@ -1,4 +1,4 @@
-package com.example.prueba.Refactor;
+package com.reactlibrary;
 
 import android.os.StrictMode;
 
@@ -18,15 +18,7 @@ import java.net.InetSocketAddress;
 import java.net.PasswordAuthentication;
 import java.net.Proxy;
 
-interface IClient {
-    String get(String url);
-    String put(String url, String id, JSONObject body);
-    void delete(String url, String id);
-    String post(String url, JSONObject body);
-
-}
-
-public class Client implements IClient{
+public class Client {
 
     public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
     private OkHttpClient client = new OkHttpClient();
@@ -50,7 +42,6 @@ public class Client implements IClient{
         return single_instance;
     }
 
-    @Override
     public String get(String url) {
         Request request = new Request.Builder()
                 .url(url)
@@ -83,7 +74,6 @@ public class Client implements IClient{
         return null;
     }
 
-    @Override
     public String put(String url, @NotNull JSONObject body) {
         Request request = new Request.Builder()
                 .url(url)
@@ -115,7 +105,6 @@ public class Client implements IClient{
         return null;
     }
 
-    @Override
     public String post(String url, @NotNull JSONObject body) {
         Request request = new Request.Builder()
                 .url(url)
@@ -147,7 +136,6 @@ public class Client implements IClient{
         return null;
     }
 
-    @Override
     public void delete(String url, String id) {
         Request request = new Request.Builder()
                 .url(url + id)

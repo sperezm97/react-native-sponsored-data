@@ -1,4 +1,4 @@
-package com.example.prueba.Refactor;
+package com.reactlibrary;
 
 import org.json.JSONException;
 import org.json.JSONObject;

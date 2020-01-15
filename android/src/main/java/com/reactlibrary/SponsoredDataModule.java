@@ -26,26 +26,15 @@ public class SponsoredDataModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void sampleMethod(String stringArgument, int numberArgument, Callback callback) {
-        // TODO: Implement some actually useful functionality
-        callback.invoke("Received numberArgument: " + numberArgument + " stringArgument: " + stringArgument);
-    }
-
-    @ReactMethod
     public void setUpProxy(final String apiKey) {
         sponsoredData.setApiKey(apiKey);
         client.getTokenWMC();
     }
 
     @ReactMethod
-    public void get(final String endpoint, final Promise promise) {
-        try {
-            JSONObject result = new JSONObject(client.get(endpoint));
-            promise.resolve(result);
-
-        } catch (JSONException e) {
-            promise.reject(e.getMessage());
-        }
+    public void get(String endpoint, Promise promise) {
+        String values = client.get(endpoint);
+        promise.resolve(values);
     }
 
     @ReactMethod
@@ -59,7 +48,7 @@ public class SponsoredDataModule extends ReactContextBaseJavaModule {
         }
     }
 
-    @ReactMethod 
+    @ReactMethod
     public void put(final String endpoint, final JSONObject body, final Callback onResult) {
         try {
             JSONObject result = new JSONObject(client.put(endpoint, body));
@@ -70,8 +59,8 @@ public class SponsoredDataModule extends ReactContextBaseJavaModule {
         }
     }
 
-    @ReactMethod 
-    public void delete(final String endpoint, Call, final Callback onResult) {
+    @ReactMethod
+    public void delete(final String endpoint, final Callback onResult) {
         try {
             JSONObject result = new JSONObject(client.get(endpoint));
             onResult.invoke(result);
