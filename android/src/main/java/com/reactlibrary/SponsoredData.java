@@ -14,6 +14,8 @@ public class SponsoredData {
     private String proxyBaseURL;
     private int proxyPort;
     private static SponsoredData single_instance = null;
+    private String uniqid;
+    private String transport;
 
     public SponsoredData() {
 
@@ -92,13 +94,30 @@ public class SponsoredData {
         this.proxyPort = proxyPort;
     }
 
+    public void setUniqid(String uniqid) {
+        this.uniqid = uniqid;
+    }
+
+    public String getUniqid() {
+        return uniqid;
+    }
+
+
+    public void setTransport(String transport) {
+        this.transport = transport;
+    }
+
+    public String getTransport() {
+        return transport;
+    }
+
     public JSONObject createUserBody() throws JSONException {
         return new JSONObject()
                 .put("Token", getApiToken() )
                 .put("mcc","370")
                 .put("mnc", "02")
-                .put("transport", "wifi")
-                .put("uniqid", "112345");
+                .put("transport", getTransport())
+                .put("uniqid", getUniqid());
     }
 
     public void setUser(String user) {
