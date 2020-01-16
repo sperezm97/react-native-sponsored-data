@@ -54,7 +54,7 @@ public class SponsoredDataModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void put(String endpoint, ReadableMap body, Callback onResult) {
         try {
-            String response = client.put(endpoint, body)
+            String response = client.put(endpoint, body);
             JSONObject result = new JSONObject(response);
             onResult.invoke(result);
 
