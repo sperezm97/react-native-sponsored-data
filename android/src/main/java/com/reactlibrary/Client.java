@@ -75,9 +75,10 @@ public class Client {
     }
 
     public String put(String url, ReadableMap body) {
+        JSONObject formatBody = new JSONObject(body).toString()
         Request request = new Request.Builder()
                 .url(url)
-                .put(RequestBody.create(JSON, body.toString()))
+                .put(RequestBody.create(JSON, formatBody))
                 .build();
 
         Authenticator.setDefault(new Authenticator() {
@@ -106,9 +107,10 @@ public class Client {
     }
 
     public String post(String url, ReadableMap body) {
+        JSONObject formatBody = new JSONObject(body).toString()
         Request request = new Request.Builder()
                 .url(url)
-                .post(RequestBody.create(JSON, body.toString()))
+                .put(RequestBody.create(JSON, formatBody))
                 .build();
 
         Authenticator.setDefault(new Authenticator() {
