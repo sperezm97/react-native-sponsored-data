@@ -26,7 +26,7 @@ public class SponsoredDataModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void setUpProxy(String apiKey, JSONObject body) {
+    public void setUpProxy(String apiKey, JSONObject body) throws JSONException {
         sponsoredData.setApiKey(apiKey);
         sponsoredData.setUniqid(body.getString("uniqid"));
         sponsoredData.setTransport(body.getString("transport"));
