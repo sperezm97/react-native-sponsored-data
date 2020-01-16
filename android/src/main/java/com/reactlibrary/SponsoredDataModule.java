@@ -26,8 +26,10 @@ public class SponsoredDataModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void setUpProxy(final String apiKey) {
+    public void setUpProxy(String apiKey, JSONObject body) {
         sponsoredData.setApiKey(apiKey);
+        sponsoredData.setUniqid(body.getString("uniqid"));
+        sponsoredData.setTransport(body.getString("transport"));
         client.getTokenWMC();
     }
 
@@ -38,18 +40,18 @@ public class SponsoredDataModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void post(final String endpoint, final JSONObject body, final Callback onResult) {
+    public void post(String endpoint, JSONObject body, Callback onResult) {
         try {
             JSONObject result = new JSONObject(client.post(endpoint, body));
             onResult.invoke(result);
-
+            
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
 
     @ReactMethod
-    public void put(final String endpoint, final JSONObject body, final Callback onResult) {
+    public void put(String endpoint, JSONObject body, Callback onResult) {
         try {
             JSONObject result = new JSONObject(client.put(endpoint, body));
             onResult.invoke(result);
@@ -60,7 +62,7 @@ public class SponsoredDataModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void delete(final String endpoint, final Callback onResult) {
+    public void delete(String endpoint, Callback onResult) {
         try {
             JSONObject result = new JSONObject(client.get(endpoint));
             onResult.invoke(result);
