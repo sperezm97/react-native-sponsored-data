@@ -75,7 +75,7 @@ public class Client {
     }
 
     public String put(String url, ReadableMap body) {
-        JSONObject formatBody = new MapUil().toJSONObject(body);
+        JSONObject formatBody = new MapUtil().toJSONObject(body);
         Request request = new Request.Builder()
                 .url(url)
                 .put(RequestBody.create(JSON, formatBody.toString()))
