@@ -11,6 +11,7 @@ import okhttp3.Protocol;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import com.facebook.react.bridge.ReadableMap;
 
 import java.io.IOException;
 import java.net.Authenticator;
@@ -73,7 +74,7 @@ public class Client {
         return null;
     }
 
-    public String put(String url, @NotNull JSONObject body) {
+    public String put(String url, ReadableMap body) {
         Request request = new Request.Builder()
                 .url(url)
                 .put(RequestBody.create(JSON, body.toString()))
@@ -104,7 +105,7 @@ public class Client {
         return null;
     }
 
-    public String post(String url, @NotNull JSONObject body) {
+    public String post(String url, ReadableMap body) {
         Request request = new Request.Builder()
                 .url(url)
                 .post(RequestBody.create(JSON, body.toString()))
@@ -135,9 +136,9 @@ public class Client {
         return null;
     }
 
-    public void delete(String url, String id) {
+    public void delete(String url) {
         Request request = new Request.Builder()
-                .url(url + id)
+                .url(url)
                 .delete()
                 .build();
 
