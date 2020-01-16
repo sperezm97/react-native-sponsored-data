@@ -33,8 +33,7 @@ public class Client {
         StrictMode.setThreadPolicy(policy);
     }
 
-    public static Client getInstance()
-    {
+    public static Client getInstance(){
         if (single_instance == null) {
             single_instance = new Client();
         }
