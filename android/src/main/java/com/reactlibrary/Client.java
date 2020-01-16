@@ -75,7 +75,7 @@ public class Client {
         return null;
     }
 
-    public String put(String url, ReadableMap body) {
+    public String put(String url, ReadableMap body)  throws JSONException{
         Request request = new Request.Builder()
                 .url(url)
                 .put(RequestBody.create(JSON, convert.toJSONObject(body).toString()))
@@ -106,7 +106,7 @@ public class Client {
         return null;
     }
 
-    public String post(String url, ReadableMap body) {
+    public String post(String url, ReadableMap body)  throws JSONException {
         Request request = new Request.Builder()
                 .url(url)
                 .post(RequestBody.create(JSON, convert.toJSONObject(body).toString()))
