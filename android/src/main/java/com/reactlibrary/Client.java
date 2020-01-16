@@ -24,6 +24,7 @@ public class Client {
     public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
     private OkHttpClient client = new OkHttpClient();
     final SponsoredData sponsored = SponsoredData.getInstance();
+    private MapUtil convert = new MapUtil();
     InetSocketAddress proxyAddr;
     Proxy proxy;
     private static Client single_instance = null;
@@ -75,10 +76,9 @@ public class Client {
     }
 
     public String put(String url, ReadableMap body) {
-        JSONObject formatBody = new MapUtil().toJSONObject(body);
         Request request = new Request.Builder()
                 .url(url)
-                .put(RequestBody.create(JSON, formatBody.toString()))
+                .put(RequestBody.create(JSON, convert.toJSONObject(body).toString()))
                 .build();
 
         Authenticator.setDefault(new Authenticator() {
@@ -107,10 +107,9 @@ public class Client {
     }
 
     public String post(String url, ReadableMap body) {
-        JSONObject formatBody = new MapUil().toJSONObject(body);
         Request request = new Request.Builder()
                 .url(url)
-                .put(RequestBody.create(JSON, formatBody.toString()))
+                .post(RequestBody.create(JSON, convert.toJSONObject(body).toString()))
                 .build();
 
         Authenticator.setDefault(new Authenticator() {
