@@ -1,7 +1,7 @@
 {
   "name": "react-native-sponsored-data",
   "title": "React Native Sponsored Data",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "Consuming internet without it using World Mobile Connection",
   "main": "index.js",
   "scripts": {

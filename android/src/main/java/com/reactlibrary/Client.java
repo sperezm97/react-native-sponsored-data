@@ -28,6 +28,7 @@ public class Client {
     InetSocketAddress proxyAddr;
     Proxy proxy;
     private static Client single_instance = null;
+    private String token = sponsored.getToken() ;
 
     public Client() {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -48,7 +49,10 @@ public class Client {
                 .url(url)
                 .get()
                 .build();
-
+        
+        if (token != null) {
+            request.header('Authorization', Token);
+        }
 
         Authenticator.setDefault(new Authenticator() {
             @Override

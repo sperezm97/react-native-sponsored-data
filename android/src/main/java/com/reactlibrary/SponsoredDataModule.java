@@ -28,50 +28,60 @@ public class SponsoredDataModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void setUpProxy(String apiKey, ReadableMap body) throws JSONException {
+    public void setUpProxy(String apiKey, ReadableMap body, Promise promise){
         sponsoredData.setApiKey(apiKey);
         sponsoredData.setUniqid(body.getString("uniqid"));
         sponsoredData.setTransport(body.getString("transport"));
-        client.getTokenWMC();
+        try {
+            client.getTokenWMC();
+            promise.resolve();
+        } catch(Exception e) {
+            promise.reject(e.getMessage());
+        }
+    
     }
 
     @ReactMethod
     public void get(String endpoint, Promise promise) {
-        String values = client.get(endpoint);
-        promise.resolve(values);
-    }
-
-    @ReactMethod
-    public void post(String endpoint, ReadableMap body, Callback onResult) {
-        try {
-            JSONObject result = new JSONObject(client.post(endpoint, body));
-            onResult.invoke(result);
-            
-        } catch (JSONException e) {
-            e.printStackTrace();
+        try{
+            String values = client.get(endpoint);
+            promise.resolve(values);
+        } catch (Exception error) {
+            promise.reject(error.getMessage());
         }
     }
 
     @ReactMethod
-    public void put(String endpoint, ReadableMap body, Callback onResult) {
+    public void post(String endpoint, ReadableMap body, String token, Promise promise) {
+        try {
+            JSONObject result = new JSONObject(client.post(endpoint, body));
+            promise.resolve(result);
+            
+        } catch (JSONException e) {
+            promise.reject(e.getMessage());
+        }
+    }
+
+    @ReactMethod
+    public void put(String endpoint, ReadableMap body, String token, Promise promise) {
         try {
             String response = client.put(endpoint, body);
             JSONObject result = new JSONObject(response);
-            onResult.invoke(result);
+            promise.resolve(result);
 
         } catch (JSONException e) {
-            e.printStackTrace();
+            promise.reject(e.getMessage());
         }
     }
 
     @ReactMethod
-    public void delete(String endpoint, Callback onResult) {
+    public void delete(String endpoint, String token, Promise promise) {
         try {
             JSONObject result = new JSONObject(client.get(endpoint));
-            onResult.invoke(result);
+            promise.resolve(result);
 
         } catch (JSONException e) {
-            e.printStackTrace();
+            promise.reject(e.getMessage());
         }
     }
 
